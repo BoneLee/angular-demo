@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../static/angular.min.js"></script>
+    </head>
+<style>table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+    <body>
+
+    <div ng-app="myApp" ng-controller="customersCtrl">
+
+    <table>
+      <tr ng-repeat="x in names">
+        <td>{{ x.Name }}</td>
+        <td>{{ x.Country }}</td>
+      </tr>
+    </table>
+        <br/>
+    <table>
+        <tr ng-repeat="x in names | orderBy : 'Country'">
+            <td>{{ x.Name }}</td>
+            <td>{{ x.Country }}</td>
+        </tr>
+    </table>
+        <br/>
+        <table>
+          <tr ng-repeat="x in names">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ x.Name }}</td>
+            <td>{{ x.Country }}</td>
+          </tr>
+        </table>
+
+        <br/>
+
+<table>
+<tr ng-repeat="x in names">
+<td ng-if="$odd" style="background-color:#00f1f1">{{ x.Name }}</td>
+<td ng-if="$even">{{ x.Name }}</td>
+<td ng-if="$odd" style="background-color:#00f1f1">{{ x.Country }}</td>
+<td ng-if="$even">{{ x.Country }}</td>
+</tr>
+</table>
+    </div>
+
+
+        <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+            $scope.names={
+"records": [
+  {
+    "Name" : "Alfreds Futterkiste",
+    "City" : "Berlin",
+    "Country" : "Germany"
+  },
+  {
+    "Name" : "Berglunds snabbköp",
+    "City" : "Luleå",
+    "Country" : "Sweden"
+  },
+  {
+    "Name" : "Centro comercial Moctezuma",
+    "City" : "México D.F.",
+    "Country" : "Mexico"
+  },
+  {
+    "Name" : "Ernst Handel",
+    "City" : "Graz",
+    "Country" : "Austria"
+  },
+  {
+    "Name" : "FISSA Fabrica Inter. Salchichas S.A.",
+    "City" : "Madrid",
+    "Country" : "Spain"
+  },
+  {
+    "Name" : "Galería del gastrónomo",
+    "City" : "Barcelona",
+    "Country" : "Spain"
+  },
+  {
+    "Name" : "Island Trading",
+    "City" : "Cowes",
+    "Country" : "UK"
+  },
+  {
+    "Name" : "Königlich Essen",
+    "City" : "Brandenburg",
+    "Country" : "Germany"
+  },
+  {
+    "Name" : "Laughing Bacchus Wine Cellars",
+    "City" : "Vancouver",
+    "Country" : "Canada"
+  },
+  {
+    "Name" : "Magazzini Alimentari Riuniti",
+    "City" : "Bergamo",
+    "Country" : "Italy"
+  },
+  {
+    "Name" : "North/South",
+    "City" : "London",
+    "Country" : "UK"
+  },
+  {
+    "Name" : "Paris spécialités",
+    "City" : "Paris",
+    "Country" : "France"
+  },
+  {
+    "Name" : "Rattlesnake Canyon Grocery",
+    "City" : "Albuquerque",
+    "Country" : "USA"
+  },
+  {
+    "Name" : "Simons bistro",
+    "City" : "København",
+    "Country" : "Denmark"
+  },
+  {
+    "Name" : "The Big Cheese",
+    "City" : "Portland",
+    "Country" : "USA"
+  },
+  {
+    "Name" : "Vaffeljernet",
+    "City" : "Århus",
+    "Country" : "Denmark"
+  },
+  {
+    "Name" : "Wolski Zajazd",
+    "City" : "Warszawa",
+    "Country" : "Poland"
+  }
+]
+            }.records;
+            $http.get("http://www.w3schools.com/angular/customers.php")
+            .success(function(response) {$scope.names = response.records;});
+        });
+        </script>
+
+    </body>
+</html>

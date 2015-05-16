@@ -1,26 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app>
-<head>
-    <script src="../static/angular.min.js"></script>
-</head>
-<body>
-Hello {{'World'}}!
-<ul>
-    <li>
-        <span>Nexus S</span>
+    <head>
+        <script src="../static/angular.min.js"></script>
+    </head>
+    <body>
+    <div>
+        Your name: <input type="text" ng-model="yourname" placeholder="Enter your name here.">
+        <hr>
+        Hello {{yourname || 'World'}}!
+        <p>1 + 2 = {{ 1 + 2 }}</p>
+    </div>
 
-        <p>
-            Fast just got faster with Nexus S.
-        </p>
-    </li>
-    <li>
-        <span>Motorola XOOM with Wi-Fi</span>
 
-        <p>
-            The Next, Next Generation tablet.
-        </p>
-    </li>
-</ul>
+    <div ng-app="">
+        <p>Input something in the input box:</p>
+        <p>Name: <input type="text" ng-model="name"></p>
+        <p ng-bind="name"></p>
+    </div>
 
-</body>
+    <div ng-app="" ng-init="firstName0='John'">
+        <p>The name is <span ng-bind="firstName0"></span></p>
+    </div>
+
+    <div data-ng-app="" data-ng-init="firstName1='John'">
+        <p>The name is <span data-ng-bind="firstName1"></span></p>
+    </div>
+
+    <div data-ng-app="">
+      <p>My first expression: {{ 5 + 5 }}</p>
+    </div>
+
+    <div ng-app="" ng-init="quantity=1;cost=5">
+        <p>Total in dollar: {{ quantity * cost }}</p>
+        <p>Total in dollar= <span ng-bind="quantity * cost"></span></p>
+    </div>
+
+    <div data-ng-app="">
+      <p>Name: <input type="text" data-ng-model="name2"></p>
+      <p>{{name2}}</p>
+    </div>
+
+    <div ng-app="" ng-init="mySwitch=true">
+    <p>
+    <button ng-disabled="mySwitch">Click Me!</button>
+    </p>
+    <p>
+    <input type="checkbox" ng-model="mySwitch"/>Button
+    </p>
+    <p>
+    {{ mySwitch }}
+    </p>
+    </div>
+
+
+    <div ng-app="">
+    <p ng-show="true">I am visible.</p>
+    <p ng-show="false">I am not visible.</p>
+    </div>
+
+
+
+    <div ng-app="" ng-init="hour=13">
+    <p ng-show="hour > 12">I am visible.</p>
+    </div>
+
+    <div ng-app="">
+    <p ng-hide="true">I am not visible.</p>
+    <p ng-hide="false">I am visible.</p>
+    </div>
+
+
+    </body>
 </html>
